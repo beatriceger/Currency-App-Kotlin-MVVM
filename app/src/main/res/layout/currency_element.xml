@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.screens.main.MainActivityViewModel" />
+
+        <variable
+            name="rate"
+            type="com.example.currencyapp.data.api.response.RateResponse" />
+
+        <variable
+            name="currency"
+            type="com.example.currencyapp.data.api.response.RateDetailed" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/parent_layout"
+        android:layout_marginTop="@dimen/space_8dp"
+        android:layout_marginBottom="@dimen/space_8dp"
+        android:onClick="@{() -> viewModel.onCurrencyClicked(currency)}">
+
+        <ImageView
+            android:id="@+id/rateIcon"
+            android:layout_width="@dimen/space_35dp"
+            android:layout_height="@dimen/space_35dp"
+            android:layout_marginTop="@dimen/space_2dp"
+            android:paddingTop="@dimen/space_2dp"
+            android:layout_marginStart="@dimen/space_10dp"
+            android:layout_marginEnd="@dimen/space_10dp"
+            android:src="@drawable/ic_eur"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintStart_toEndOf="@+id/rateIcon"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <TextView
+                android:id="@+id/rateName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_10dp"
+                android:layout_marginEnd="@dimen/space_10dp"
+                android:text="@{currency.rateName}"
+                android:textColor="@color/text_grey_dark"
+                android:textSize="@dimen/text_16sp"
+                tools:text="USD" />
+
+            <TextView
+                android:id="@+id/rateDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_10dp"
+                android:layout_marginEnd="@dimen/space_10dp"
+                android:text="@{currency.rateDescription}"
+                android:textColor="@color/text_grey"
+                android:textSize="@dimen/text_14sp"
+                tools:text="US Dollar" />
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/rateMultiplier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="@dimen/space_10dp"
+            android:inputType="numberDecimal"
+            android:maxWidth="@dimen/space_120dp"
+            android:minWidth="@dimen/space_64dp"
+            android:textSize="@dimen/text_24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">CurrencyApp</string>
+    <string name="press_again">Press again to exit the app!</string>
+    <string name="currency_details">\" lorem ipsum\"</string>
+</resources>
